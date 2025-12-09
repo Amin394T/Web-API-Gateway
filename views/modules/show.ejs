@@ -1,0 +1,39 @@
+<%- include('../layout', { body: '' }) %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h1><%= module.name %></h1>
+    <div><strong>Base Path:</strong> <%= module.base_path %></div>
+    <div><strong>Status:</strong> <%= module.status %></div>
+    <div><strong>Created:</strong> <%= module.created_on %> by <%= module.created_by %></div>
+  </div>
+  <div>
+    <a class="btn btn-sm btn-primary" href="/modules/<%= module.id %>/routes/new">Add Route</a>
+    <a class="btn btn-sm btn-outline-secondary" href="/modules">Back</a>
+  </div>
+</div>
+
+<h3>Routes</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>URI Path</th>
+      <th>Cache</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (!module.routes || module.routes.length === 0) { %>
+      <tr><td colspan="4">No routes yet.</td></tr>
+    <% } %>
+    <% (module.routes || []).forEach(r => { %>
+      <tr>
+        <td><%= r.method %></td>
+        <td><%= r.uri_path %></td>
+        <td><%= r.cache_time %>s</td>
+        <td><%= r.created_on %> by <%= r.created_by %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
