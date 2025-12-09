@@ -9,6 +9,10 @@
   </div>
   <div>
     <a class="btn btn-sm btn-primary" href="/modules/<%= module.id %>/routes/new">Add Route</a>
+    <a class="btn btn-sm btn-outline-info" href="/modules/<%= module.id %>/edit">Edit</a>
+    <form method="POST" action="/modules/<%= module.id %>/delete" style="display:inline;">
+      <button class="btn btn-sm btn-outline-danger" type="submit" onclick="return confirm('Delete this module?')">Delete</button>
+    </form>
     <a class="btn btn-sm btn-outline-secondary" href="/modules">Back</a>
   </div>
 </div>
@@ -21,11 +25,12 @@
       <th>URI Path</th>
       <th>Cache</th>
       <th>Created</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% if (!module.routes || module.routes.length === 0) { %>
-      <tr><td colspan="4">No routes yet.</td></tr>
+      <tr><td colspan="5">No routes yet.</td></tr>
     <% } %>
     <% (module.routes || []).forEach(r => { %>
       <tr>
@@ -33,6 +38,12 @@
         <td><%= r.uri_path %></td>
         <td><%= r.cache_time %>s</td>
         <td><%= r.created_on %> by <%= r.created_by %></td>
+        <td>
+          <a class="btn btn-xs btn-outline-info" href="/modules/<%= module.id %>/routes/<%= r.id %>/edit">Edit</a>
+          <form method="POST" action="/modules/<%= module.id %>/routes/<%= r.id %>/delete" style="display:inline;">
+            <button class="btn btn-xs btn-outline-danger" type="submit" onclick="return confirm('Delete this route?')">Delete</button>
+          </form>
+        </td>
       </tr>
     <% }); %>
   </tbody>
