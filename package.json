@@ -1,24 +1,25 @@
 {
   "name": "api-gateway",
-  "version": "0.1.0",
-  "description": "Simple API Gateway app with modules and routes management",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "version": "1.0.0",
+  "description": "API management application",
+  "main": "server.js",
+  "type": "module",
   "dependencies": {
-    "body-parser": "^1.20.2",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "lowdb": "^5.0.4",
-    "nanoid": "^4.0.0",
-    "morgan": "^1.10.0"
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "scripts": {
+    "start": "node --watch server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amin394T/Web-API-Gateway.git"
+  },
+  "author": "Amin394T",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amin394T/Web-API-Gateway/issues"
+  },
+  "homepage": "https://github.com/Amin394T/Web-API-Gateway#readme"
 }
