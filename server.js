@@ -1,4 +1,9 @@
 import app from "./app.js";
+import { logMessage } from "./utilities/logKeeper.js";
+
+logMessage("Logging utility imported.");
+logMessage({"status":"success","message":"LogKeeper is operational."});
+
 
 export let logMessage = (message) => {
   console.log(`[${new Date().toISOString()}] ${message}`);
