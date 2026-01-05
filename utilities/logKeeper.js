@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import { join } from "node:path";
 
-export async function logMessage(message) {
+export async function logMessage(message, echo = true) {
   try {
     const timestamp = new Date().toISOString().replace("T", " ").replace(/\..+/, "");
     const today = timestamp.slice(0, 10);
@@ -15,11 +15,9 @@ export async function logMessage(message) {
     }\n`;
 
     await fs.appendFile(logFile, logEntry);
-    console.log(logEntry.trim());
+    if (echo) console.log(logEntry.trim());
   }
   catch (error) {
     console.error(`Logging failed : ${error.message}`);
   }
 }
-
-// TODO: severity levels, console logging optional

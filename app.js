@@ -1,9 +1,7 @@
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import dotenv from 'dotenv';
 import express from "express";
 
-import { logMessage } from "./server.js";
+import { logMessage } from "./utilities/logKeeper.js";
 
 
 // application configuration
