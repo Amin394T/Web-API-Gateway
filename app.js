@@ -2,11 +2,10 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 
-import data from "./utilities/data.js";
+import router from "./source/router.js";
 import { logMessage } from "./utilities/logKeeper.js";
 
 // TODO: database connection
-console.log(data);
 
 // app configuration
 dotenv.config();
@@ -34,9 +33,7 @@ app.use((req, res, next) => {
 });
 
 // routes handling
-app.use("/api", (req, res) => {
-  res.status(501).json({ status: 501, message: "API not implemented yet" });
-});
+app.use("/api", router);
 
 // error management
 app.use((req, res) => {
