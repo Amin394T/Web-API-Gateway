@@ -2,9 +2,11 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 
+import data from "./utilities/data.js";
 import { logMessage } from "./utilities/logKeeper.js";
 
 // TODO: database connection
+console.log(data);
 
 // app configuration
 dotenv.config();
@@ -17,7 +19,7 @@ app.use("/favicon.ico", (req, res) => res.status(204));
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "*",
+    origin: process.env.CROSS_ORIGIN || "*",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
