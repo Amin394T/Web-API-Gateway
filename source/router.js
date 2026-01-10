@@ -1,12 +1,15 @@
 import { Router } from "express";
-import routes from "./utilities/data.js";
+import routes from "../utilities/data.js";
+import { match } from 'path-to-regexp';
 
 const router = Router();
 
-const compiledRoutes = routes.map(r => ({
-  ...r,
-  matcher: pathMatch(r.path, { decode: decodeURIComponent })
+const compiledRoutes = routes.map(route => ({
+  ...route,
+  matcher: match(route.path, { decode: decodeURIComponent })
 }));
+
+console.log("Compiled Routes:", compiledRoutes);
 
 
 router.use((req, res, next) => {

@@ -5,7 +5,9 @@ import cors from "cors";
 import router from "./source/router.js";
 import { logMessage } from "./utilities/logKeeper.js";
 
+
 // TODO: database connection
+
 
 // app configuration
 dotenv.config();
@@ -24,6 +26,7 @@ app.use(
   })
 );
 
+
 // traffic logging
 app.use((req, res, next) => {
   res.on("finish", () => {
@@ -32,10 +35,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// routes handling
-app.use("/api", router);
 
-// error management
+// routes handling
+app.use("/", router);
+
+
+// error handling
 app.use((req, res) => {
   return res.status(404).json({ status: 404, message: "Route Not Found" });
 });
