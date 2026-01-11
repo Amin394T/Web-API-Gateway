@@ -8,7 +8,8 @@ router.use((req, res, next) => {
     if (route.path != req.path) continue;
     if (route.method != req.method) continue;
 
-    return res.status(200).json(route.code);
+    const response = new Function(route.code)();
+    return res.status(response.status).json(response.data);
   }
   next();
 });

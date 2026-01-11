@@ -4,10 +4,10 @@ export default [
     description: "Fetch the list of all employees with filters",
     module: "Employee Management",
     method: "GET",
-    path: "/employees/fetch-list/:id",
+    path: "/employees/fetch-list",
     cache: 0,
     active: true,
-    code: "ABC123",
+    code: "const test = { name: 'John Doe', position: 'Developer' }; return { status: 200, data: test };",
   },
   {
     id: 2,
