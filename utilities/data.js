@@ -4,10 +4,10 @@ export default [
     description: "Fetch the list of all employees with filters",
     module: "Employee Management",
     method: "GET",
-    path: "/employees/fetch-list",
+    path: "/employees/fetch-list/:id",
     cache: 0,
     active: true,
-    code: "return",
+    code: "ABC123",
   },
   {
     id: 2,
@@ -17,6 +17,7 @@ export default [
     path: "/employees/fetch-details",
     cache: 0,
     active: true,
+    code: "DEF456",
   },
   {
     id: 3,
@@ -26,6 +27,7 @@ export default [
     path: "/employees/create",
     cache: 0,
     active: true,
+    code: "GHI789",
   },
   {
     id: 4,
@@ -35,6 +37,7 @@ export default [
     path: "/employees/update",
     cache: 0,
     active: true,
+    code: "JKL012",
   },
   {
     id: 5,
@@ -44,5 +47,6 @@ export default [
     path: "/employees/delete",
     cache: 0,
     active: true,
+    code: "MNO345",
   },
 ];
