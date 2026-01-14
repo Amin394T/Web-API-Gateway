@@ -17,7 +17,7 @@ export default [
     path: "/employees/fetch-details",
     cache: 0,
     active: true,
-    code: "const data = { name: query.name, position: req.query.position }; return { status: 200, data };",
+    code: "const data = { name: req.query.name, position: req.query.position }; return { status: 200, data };",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ export default [
     path: "/employees/create",
     cache: 0,
     active: true,
-    code: "GHI789",
+    code: "return { status: 501, data: { message: 'Not Implemented' } };",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export default [
     path: "/employees/update",
     cache: 0,
     active: true,
-    code: "JKL012",
+    code: "return { status: 501, data: { message: 'Not Implemented' } };",
   },
   {
     id: 5,
@@ -47,6 +47,6 @@ export default [
     path: "/employees/delete",
     cache: 0,
     active: true,
-    code: "MNO345",
+    code: "return { status: 501, data: { message: 'Not Implemented' } };",
   },
 ];

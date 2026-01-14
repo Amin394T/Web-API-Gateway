@@ -1,12 +1,29 @@
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
+import pkg from "pg";
 
 import router from "./source/router.js";
 import { logMessage } from "./utilities/logKeeper.js";
 
 
-// TODO: database connection
+const { Pool } = pkg;
+
+// database connection
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
+pool.on('connect', () => {
+  logMessage('Connected to PostgreSQL database');
+});
+
+pool.on('error', (err) => {
+  logMessage(`Unexpected error on idle client: ${err}`);
+  process.exit(-1);
+});
+
+export { pool };
 
 
 // app configuration

@@ -1,2 +1,3 @@
 - support request headers
 - support dynamic URL segment parameters
+- quit exposing the whol request object to handlers
