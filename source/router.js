@@ -7,8 +7,8 @@ router.use((req, res, next) => {
   for (const route of routes) {
     if (route.path != req.path) continue;
     if (route.method != req.method) continue;
-
-    const response = new Function(route.code)();
+    
+    const response = new Function('req', route.code)(req);
     return res.status(response.status).json(response.data);
   }
   next();

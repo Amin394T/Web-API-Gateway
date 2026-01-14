@@ -7,7 +7,7 @@ export default [
     path: "/employees/fetch-list",
     cache: 0,
     active: true,
-    code: "const test = { name: 'John Doe', position: 'Developer' }; return { status: 200, data: test };",
+    code: "const data = [{ name: 'John Doe', position: 'Developer' }, { name: 'Jane Smith', position: 'Designer' }]; return { status: 200, data };",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export default [
     path: "/employees/fetch-details",
     cache: 0,
     active: true,
-    code: "DEF456",
+    code: "const data = { name: query.name, position: req.query.position }; return { status: 200, data };",
   },
   {
     id: 3,
