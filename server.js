@@ -1,4 +1,4 @@
-import app from "./app.js";
+import { app } from "./app.js";
 import { logMessage } from "./utilities/logKeeper.js";
 
 

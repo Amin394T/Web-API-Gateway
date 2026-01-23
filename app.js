@@ -5,32 +5,26 @@ import pkg from "pg";
 
 import router from "./source/router.js";
 import { logMessage } from "./utilities/logKeeper.js";
+dotenv.config();
 
-
-const { Pool } = pkg;
 
 // database connection
-const pool = new Pool({
+const db = new pkg.Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-pool.on('connect', () => {
-  logMessage('Connected to PostgreSQL database');
-});
-
-pool.on('error', (err) => {
-  logMessage(`Unexpected error on idle client: ${err}`);
+db.connect()
+.then(() => {
+  logMessage('Database connection succeeded.');
+})
+.catch((error) => {
+  logMessage(`Database connection failed : ${error}`);
   process.exit(-1);
 });
 
-export { pool };
-
 
 // app configuration
-dotenv.config();
-
 const app = express();
-export default app;
 
 app.use(express.json());
 app.use("/favicon.ico", (req, res) => res.status(204));
@@ -71,3 +65,6 @@ app.use((err, req, res, next) => {
     ...(process.env.ENV_TYPE != "production" && { details: err.stack }),
   });
 });
+
+
+export { app, db };
